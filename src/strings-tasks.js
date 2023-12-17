@@ -131,10 +131,7 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('abc', -2) => ''
  */
 function repeatString(str, times) {
-  if (times < 0) {
-    throw new Error('Not implemented');
-  }
-  return str.repeat(times);
+  return times > 0 ? str.repeat(times) : '';
 }
 
 /**
@@ -323,8 +320,14 @@ function countVowels(str) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const res = str.toLowerCase().replace(/[^a-z]/g, '');
+  for (let i = 0; i < res.length / 2; i += 1) {
+    if (res[i] !== res[res.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
